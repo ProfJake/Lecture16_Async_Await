@@ -9,9 +9,10 @@ const reader = rl.createInterface({
 
     input: process.stdin,
     output: process.stdout
-});
+});  
 //even though the function returns a simple string
-//the "async" label causes it to implicitly wrap its return value in a promise
+//the "async" label causes it to implicitly wrap
+//its return value in a promise
 async function greeting(){
     
     return "Hello";
@@ -19,7 +20,7 @@ async function greeting(){
 
 //a regular function to use in the promise chain
   function simpleErr(){
-reader.question("Do you want to throw an error?", (resp)=>{
+      reader.question("Do you want to throw an error?", (resp)=>{
 	if (resp.toString().startsWith("y")){
 	    throw new Error("I am an ERROR!!")
 	}else{
@@ -36,9 +37,9 @@ greeting().then(
     val => {
 	console.log(val);
 	return val;
-    }
-).then(
-    ()=> simpleErr()
+    })
+    .then(
+   ()=> simpleErr()
 ).catch(err =>
 {
     console.log(e.message)

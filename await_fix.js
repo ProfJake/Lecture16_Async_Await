@@ -76,10 +76,10 @@ rl.question("You wanna buy a pizza?", async (resp) => {
     if (resp.toString().startsWith('y')){
 	try{
 	    let first = await orderPizza("Cheese");
-	    let next  = await orderToppings(first);
+	    let  next  = await orderToppings(first);
 	    let after = await sideOrders(next);
-	    let last = pay(after);
-	} catch(e){
+	    pay(after);
+	}catch (e){
 	    failed(e);
 	}
     } else {

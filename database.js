@@ -1,4 +1,4 @@
-/*index.js
+/*database.js
 Simple demonstration of using async/await syntax to connect to a mongodb
 instance.
 Note: For this to work, you NEED to have the mongo daemon running in the 
@@ -11,7 +11,7 @@ var tracker = require("tracker");
 
 var url = "mongodb://127.0.0.1:27017/"
 
-    const client = new mongoClient(url);
+const client = new mongoClient(url,{ useUnifiedTopology: true });
 
 //turn this function into an async function so it returns a promise
 async function run(){
@@ -19,9 +19,8 @@ async function run(){
     try{
 
 	//We await for the connection to be established
-	await client.connect({useUnifiedTopology: true});
+	await client.connect();
 	//if we use await we don't have to pass a callback into connect
-
 	//Everything after this line will run on the fulfilled promise value
        const actDB = client.db("practiceDB");
        const activities = actDB.collection("activities");
